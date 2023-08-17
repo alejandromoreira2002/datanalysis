@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Usuarios</title>
+</head>
+<body>
+    <form action="../src/register_controller.php" method="POST">
+        Nombre de Usuario: <input type="text" name="username"><br>
+        Correo: <input type="email" name="email"><br>
+        Contraseña: <input type="password" name="password"><br>
+        Rol:
+        <select name="rol">
+            <option value="no-value" disabled selected>-- Seleccione Rol --</option>
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+        </select><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
