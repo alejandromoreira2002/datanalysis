@@ -4,3 +4,5 @@ src/db/configdb.ini
 server
 muestraDatos.html
 getDatos.php
+LICENSE
+README.md

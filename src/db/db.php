@@ -1,4 +1,5 @@
 <?php
+    include_once(dirname(__DIR__,1).'/func/functions.php');
     class db{
         private $user;
         private $password;
@@ -6,14 +7,14 @@
         private $db;
         
         function __construct(){
-            if(!file_exists('./configdb.ini'))
+            if(!file_exists(dirname(__DIR__,1).'/db/configdb.ini'))
             {
                 header('Location: ../public/error_conexion.html');
             }else{
-                $datosDB = file_get_contents('./db/configdb.ini');
+                $datosDB = file_get_contents(dirname(__DIR__,1).'/db/configdb.ini');
                 $datosDB= explode("\n", $datosDB);    	
                 $this->user = trim($datosDB[0]);
-                $this->password = trim($datosDB[1]) == "no_data" ? "" : null; //$resultado = $condicion ? 'verdadero' : 'falso';
+                $this->password = trim($datosDB[1]) == "no_data" ? "" : trim($datosDB[1]);
                 $this->server =  trim($datosDB[2]);
                 $this->db = trim($datosDB[3]);
             }
@@ -42,6 +43,7 @@
                 $datos[] = $row;
             }
             mysqli_close($conn);
+            writeLog("Se obtuvieron datos");
             return $datos;
         }
 
